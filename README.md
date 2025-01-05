@@ -18,7 +18,6 @@ This project is a Game Hub application built with TypeScript and React. It allow
 - **React** - Frontend library for building UI components
 - **CSS** - Styling and layout
 - **REST APIs** - Fetching game data dynamically
-- **Docker** - Containerization and development environment
 
 ## Folder Structure
 - **src/** - Contains components, hooks, services, and utilities.
