@@ -1,4 +1,4 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Input, InputGroup, InputLeftElement, useColorModeValue } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -8,15 +8,28 @@ interface Props {
 
 const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
+  const textColor = useColorModeValue("ink.800", "magenta.50");
 
   return (
-    <form onSubmit={(event) => {
+    <form style={{ width: "100%" }} onSubmit={(event) => {
       event.preventDefault();
       if (ref.current) onSearch(ref.current.value);
     }}>
-      <InputGroup>
-        <InputLeftElement children={<BsSearch />} />
-        <Input ref={ref} borderRadius={20} placeholder="Search games..." variant="filled" />
+      <InputGroup borderRadius="full" overflow="hidden" bg="whiteAlpha.50" width="100%" height="52px">
+        <InputLeftElement color="magenta.200">
+          <BsSearch />
+        </InputLeftElement>
+        <Input
+          ref={ref}
+          width="100%"
+          height="52px"
+          borderRadius="full"
+          placeholder="Search games..."
+          variant="filled"
+          focusBorderColor="magenta.400"
+          color={textColor}
+          _placeholder={{ color: useColorModeValue("ink.500", "magenta.200") }}
+        />
       </InputGroup>
     </form>
   );

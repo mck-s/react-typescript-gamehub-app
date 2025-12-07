@@ -12,8 +12,19 @@ interface Props {
 
 const GameCard = ({ game }: Props) => {
   return (
-    <Card>
-      <Image src={getCroppedImageUrl(game.background_image)} />
+    <Card
+      overflow="hidden"
+      border="1px solid"
+      borderColor="whiteAlpha.100"
+      bg="whiteAlpha.50"
+      transition="all 0.25s ease"
+      _hover={{
+        transform: "translateY(-6px)",
+        borderColor: "magenta.400",
+        boxShadow: "0 20px 50px rgba(255,53,184,0.2)",
+      }}
+    >
+      <Image src={getCroppedImageUrl(game.background_image)} borderBottom="1px solid" borderColor="whiteAlpha.200" />
       <CardBody>
         <HStack justifyContent='space-between' marginBottom={3}>
           <PlatformIconList platforms={game.parent_platforms?.map(p => p.platform)} />

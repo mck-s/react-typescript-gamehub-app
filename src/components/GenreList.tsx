@@ -44,7 +44,10 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
                 onClick={() => onSelectGenre(genre)}
                 fontSize="md"
-                variant="link"
+                variant="ghost"
+                colorScheme="magenta"
+                color={genre.id === selectedGenre?.id ? "magenta.200" : "magenta.50"}
+                _hover={{ bg: "whiteAlpha.100" }}
               >
                 {genre.name}
               </Button>
