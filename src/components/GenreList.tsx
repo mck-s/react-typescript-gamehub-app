@@ -7,6 +7,7 @@ import {
   ListItem,
   Spinner,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
@@ -18,6 +19,9 @@ interface Props {
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data, isLoading, error } = useGenres();
+  const textColor = useColorModeValue("ink.800", "magenta.50");
+  const selectedColor = useColorModeValue("magenta.600", "magenta.200");
+  const hoverBg = useColorModeValue("blackAlpha.50", "whiteAlpha.100");
 
   if (error) return null;
 
@@ -46,8 +50,8 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
                 fontSize="md"
                 variant="ghost"
                 colorScheme="magenta"
-                color={genre.id === selectedGenre?.id ? "magenta.200" : "magenta.50"}
-                _hover={{ bg: "whiteAlpha.100" }}
+                color={genre.id === selectedGenre?.id ? selectedColor : textColor}
+                _hover={{ bg: hoverBg }}
               >
                 {genre.name}
               </Button>

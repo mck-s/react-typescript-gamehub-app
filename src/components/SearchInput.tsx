@@ -9,6 +9,7 @@ interface Props {
 const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
   const textColor = useColorModeValue("ink.800", "magenta.50");
+  const iconColor = useColorModeValue("ink.600", "magenta.200");
 
   return (
     <form style={{ width: "100%" }} onSubmit={(event) => {
@@ -16,7 +17,7 @@ const SearchInput = ({ onSearch }: Props) => {
       if (ref.current) onSearch(ref.current.value);
     }}>
       <InputGroup borderRadius="full" overflow="hidden" bg="whiteAlpha.50" width="100%" height="52px">
-        <InputLeftElement color="magenta.200">
+        <InputLeftElement color={iconColor}>
           <BsSearch />
         </InputLeftElement>
         <Input

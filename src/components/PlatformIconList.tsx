@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from 'react-icons/md';
 import { SiNintendo } from 'react-icons/si';
 import { BsGlobe } from 'react-icons/bs';
-import { HStack, Icon } from "@chakra-ui/react";
+import { HStack, Icon, useColorModeValue } from "@chakra-ui/react";
 import { Platform } from "../hooks/useGames";
 import { IconType } from "react-icons";
 
@@ -18,6 +18,8 @@ interface Props {
 }
 
 const PlatformIconList = ({ platforms = [] }: Props) => {
+  const iconColor = useColorModeValue('ink.700', 'magenta.200');
+
   const iconMap: { [key: string]: IconType } = { 
     pc: FaWindows,
     playstation: FaPlaystation,
@@ -33,7 +35,7 @@ const PlatformIconList = ({ platforms = [] }: Props) => {
   return (
     <HStack marginY={1}> 
       {platforms.map((platform) => (
-        <Icon key={platform.id} as={iconMap[platform.slug]} color='magenta.200'/>
+        <Icon key={platform.id} as={iconMap[platform.slug]} color={iconColor}/>
       ))}
     </HStack>
   );

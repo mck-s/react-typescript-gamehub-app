@@ -1,4 +1,4 @@
-import { Heading } from '@chakra-ui/react'
+import { Heading, useColorModeValue } from '@chakra-ui/react'
 import { GameQuery } from '../App'
 
 interface Props {
@@ -7,13 +7,17 @@ interface Props {
 
 const GameHeading = ({ gameQuery }: Props) => {
   const heading = `${gameQuery.platform?.name || ''} ${gameQuery.genre?.name || ''} Games`;
+  const gradient = useColorModeValue(
+    "linear(to-r, ink.800, magenta.500)",
+    "linear(to-r, magenta.300, magenta.500)"
+  );
 
   return (
     <Heading
       as='h1'
       marginY={5}
       fontSize='5xl'
-      bgGradient="linear(to-r, magenta.300, magenta.500)"
+      bgGradient={gradient}
       bgClip="text"
     >
       {heading}

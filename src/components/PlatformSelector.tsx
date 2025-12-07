@@ -1,4 +1,4 @@
-import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList, useColorModeValue } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { Platform } from "../hooks/useGames";
 import usePlatforms from "../hooks/usePlatforms";
@@ -10,6 +10,7 @@ interface Props {
 
 const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
   const { data, error } = usePlatforms();
+  const textColor = useColorModeValue("ink.800", "magenta.100");
 
   if (error) return null;
   
@@ -21,6 +22,7 @@ const PlatformSelector = ({ onSelectPlatform, selectedPlatform }: Props) => {
         variant="outline"
         colorScheme="magenta"
         borderColor="whiteAlpha.300"
+        color={textColor}
       >
         {selectedPlatform?.name || 'Platforms'}
       </MenuButton>
